@@ -1,0 +1,31 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+	<div class= "main-container">
+	<h1>Post</h1>
+		<div class="post-wrapper">
+			{% for post in posts %}
+			<div>
+				<div class="post">
+					<img class="thumbnail" src="{% static 'images/x.png' %}">
+					<div style="padding : 12px">
+						<h6 class="post-title">{{post.headline}}</h6>
+						<p class="post-intro">{{post.sub_headline}}</p>
+						<a href="{% url 'post' post.id %}">More</a>
+
+						<hr>
+						{% for tag in post.tags.all %}
+							<span class="tag">{{tag}}</span>
+						{% endfor %}
+						<hr>
+					</div>
+				</div>
+			</div>
+			{% empty %}
+				<h3>No posts found...</h3>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock content %}
