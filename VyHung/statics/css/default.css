@@ -169,15 +169,6 @@ h6 { font-size: 16px;}
 	padding-bottom: 50px;
 }
 
-#profile_pic{
-	display: block;
-	margin:0 auto;
-
-	height: 200px;
-	width: 200px;
-	object-fit: cover;
-	border:2px solid var(--borderColor);
-}
 
 
 #theme-options-wrapper{
@@ -304,7 +295,7 @@ h6 { font-size: 16px;}
 	background-color: var(--previewShadow);
 }
 
-.social-links{
+.container-slide{
 	display: grid;
 	align-content: center;
 	text-align: center;
@@ -481,7 +472,7 @@ h6 { font-size: 16px;}
 	background-color: rgb(62,44,100);
 	border: 1px solid white;
 }
-/*Media Query*/
+/*Media Query/////////////////////////////////////*/
 @media (max-width: 992px){
 	.carousel-caption {
 		top: 20%;
@@ -510,16 +501,6 @@ h6 { font-size: 16px;}
 	
 
 }
-.img-Featured-Post{
-	min-height: 50%;
-	max-width: 100%;
-	display: flex;
-	align-items: center;
-}
-/*hover feature post*/
-
-
-/*/////*/
 
 .content-author-post{
 	font-size: 15px !important;
@@ -556,6 +537,12 @@ h6 { font-size: 16px;}
 	/*top :50%;*/
 	transform: translate(-47%, 110%)!important;
 }
+.author-image{
+	object-fit: cover;
+	width: 100% !important;
+	height: 240px !important;
+
+}
 }
 
 
@@ -577,7 +564,7 @@ h6 { font-size: 16px;}
 	.author-post{
 	background-color: pink !important;
 	position: absolute;
-	height: 220px !important;
+	height: 220px ;
 	/*top: 50%;*/
 	width: 82%!important;
   	left: 50%;
@@ -586,10 +573,7 @@ h6 { font-size: 16px;}
   	transform: translate(-48%, -72%)!important;
 	font-family: 'Russo One', sans-serif !important;
   }
-  .img-Featured-Post{
-	min-height: 50%;
-	
-}
+
 .content-author-post{
 	font-size: 12px !important;
 	overflow: hidden ;
@@ -629,6 +613,11 @@ h6 { font-size: 16px;}
 
 .Header-moblie{
 	display: none!important;
+}
+.author-imager{
+	object-fit: cover;
+	width: 100% !important;
+	height: 160px !important;
 }
 }
 
@@ -691,6 +680,11 @@ h6 { font-size: 16px;}
 	padding-bottom: 50px;
 	padding-top: 50px !important;
 	gap:100px;
+}
+.author-image{
+	object-fit: cover;
+	width: 100% !important;
+	height: 180px !important;
 }
 }
 /*video*/
@@ -812,17 +806,12 @@ section:nth-child(even){
   	transform: translate(-50%, -71%);
 	font-family: 'Russo One', sans-serif !important;
 }
-.text-Featured-Post{
-	font-size: 30px;
-	margin-bottom: 10px;
-	font-family: 'Averia Serif Libre', cursive;
 
-}
-.img-Featured-Post{
-	min-height: 50%;
-	
-	max-width: 100%;
-	
+.author-image{
+	object-fit: cover;
+	width: 100% !important;
+	height: 240px !important;
+	object-position: top !important;
 }
 .content-author-post{
 	font-size: 16px;

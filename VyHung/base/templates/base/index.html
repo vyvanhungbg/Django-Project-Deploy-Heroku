@@ -58,8 +58,8 @@
 						<h1>HONG</h1>
 						<h1>&</h1>
 						<h1>HUNG</h1>
-						<h4>May 18,2023, 7:00 PM |</h4>
-						<h2>638</h2>
+						<h4>{{Date.now}}</h4>
+						<h2>{{Date.number_day}}</h2>
 					</div>
 					
 				</div>
@@ -68,18 +68,18 @@
 		</div>
 
 
-	<section class= " container-fluid d-flex justify-content-center w-75 ">
+	<section class= "container-fluid d-flex justify-content-center w-75">
 		<div class="author-post  row rounded" style="padding: 30px 30px 30px 30px;">
 			<div class =" d-flex  align-items-between w-50">
-				<div class="container d-flex justify-content-center ">
-					<img class="img-fluid" src="./images/x.png"/>
+				<div class="d-flex justify-content-center">
+					<img class="author-image" src="{{aboutme.image_author.url}}"/>
 				</div>
 			</div>
-			<div class =" w-50 d-flex  align-items-center" style="padding-left: 30px;">
+			<div class =" w-50 d-flex row justify-content-center  align-items-center" style="padding-left: 30px;">
 				<div class="d-flex align-items-center  flex-column">
 					<div class="header-author-post">Tác Giả</div>
 					<h2 class="name-author-post">Đỗ Thị Hồng</h2>
-					<div class="content-author-post">Cô gái sinh năm 1999 với lỗi tư duy lỗi thời cùng tính cách thất thường </div>
+					<div class="content-author-post">{{aboutme.maxim}}</div>
 					<hr style="width: 75%">
 					<!-- <div class="comment-feature-post">0 comment</div> -->
 				</div>
@@ -97,32 +97,29 @@
 				<div class="about-me">
 					<h4>More about me</h4>
 
-					<p>I build new projects just to tickle my brain and love teaching others how they're made.</p>
+					<p>{{aboutme.more_about_me_1}}</p>
 
-					<p>While I keep busy teaching courses, I still take interviews in search of a great team & projects that interest me.</p>
+					<p>{{aboutme.more_about_me_2}}</p>
 
 
 					<hr>
 
-					<h4>TOP EXPERTISE</h4>
+					<h4>YÊU THÍCH</h4>
 
-					<p>Fullstack developer with primary focus on Django + React: <a target="_blank" href="resume.pdf">Download Resume</a></p>
+					<p>{{aboutme.headline_favorite}}<a target="_blank" href="resume.pdf">Download Resume</a></p>
 
 					<div id="skills">
 						<ul>
-							<li>Python</li>
-							<li>Django</li>
-							<li>JavaScript</li>
-							<li>React</li>
-							<li>Postgres</li>
+							{% for favorite in aboutme.favorites.all %}
+								<li>{{favorite}}</li>
+							{% endfor %}
+							
 						</ul>
 
 						<ul>
-							<li>Google Maps API</li>
-							<li>JS Charts</li>
-							<li>AWS (RDS/S3)</li>
-							<li>Heroku</li>
-							<li>HTML/CSS</li>
+							{% for song in aboutme.songs.all %}
+								<li>{{song}}</li>
+							{% endfor %}
 						</ul>
 
 					</div>
@@ -130,13 +127,31 @@
 				</div>
 
 				
-				<div class="social-links">
-					<img id="social_img" src="{% static 'images/follow.jpg' %}">
-					<h3>Find me on Twitter & Youtube</h3>
+				<div class="container-slide">
+					<div id="slides" class="carousel slide" data-ride="carousel">
+						<ul class="carousel-indicators">
+							<li data-target="#slides" data-slide-to="0" class="active"></li>
+							{% for item in Images %}
+								<li data-target="#slides" data-slide-to="{{item.title}}"></li>
+							{% endfor %}
+						</ul>
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img src="{% static 'images/IMG_4729.jpg' %}">
+							</div>
+							
+							{% for item in Images %}
+								<div class="carousel-item">
+								<img src="{{item.image.url}}">
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+					<h3>Contact Me Gmail & Facebook</h3>
 
-					<a target="_blank" href="https://www.youtube.com/c/dennisivy">YouTube: @DennisIvy</a>
+					<a target="_blank" href="https://mail.google.com/mail">Gmail: Dohong9a3@gmail.com</a>
 					<br>
-					<a target="_blank" href="https://twitter.com/dennisivy11">Twitter: @DennisIvy11</a>
+					<a target="_blank" href="https://www.facebook.com/profile.php?id=100012264722960">Facebook: Đỗ Hồng</a>
 				</div>
 			</div>
 
@@ -151,7 +166,7 @@
 				{% for post in posts %}
 				<div>
 					<div class="post">
-						<img class="thumbnail" src="{% static 'images/x.png' %}">
+						<img class="thumbnail" src="{{post.thumbnail.url}}">
 						<div style="padding : 12px">
 							<h6 class="post-title">{{post.headline}}</h6>
 							<p class="post-intro">{{post.sub_headline}}</p>
