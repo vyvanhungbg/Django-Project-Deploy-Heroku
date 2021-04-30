@@ -26,6 +26,13 @@
 					<a class="nav-link" href="{% url 'home'  %}">Connect</a>
 				</li>
 			</ul>
+
+			<ul id='navigation'>
+			<li><a href='{% url 'home'  %}'>Contact</a></li>
+			{% if request.user.is_authenticated %}
+				<li><a href ='{% url 'create_post'  %}'></a>
+			{% endif %}
+			</ul>
 		</div>
 	</div>
 </nav>

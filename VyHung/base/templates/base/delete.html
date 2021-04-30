@@ -1,0 +1,15 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+    <div class="main-container">
+	<a class="btn btn-sm btn-primary" href="{% url 'posts' %}">&laquo Back to Posts</a>
+	
+        <form action="" method="POST" >
+            {% csrf_token %}
+            <p>Bạn chắc chắn muốn xóa bài viết</p>
+
+            <input class="btn btn-danger" type="submit" value="Xác nhận xóa">
+            
+        </form>
+    </div>
+{% endblock content %}
