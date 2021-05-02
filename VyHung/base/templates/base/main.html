@@ -1,7 +1,11 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
 <head>
-   {% load static %}
+    <title>My Story</title>
+
+
+
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
 	<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
@@ -22,12 +26,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@1,300&family=Chango&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
-    <title>My Story</title>
+   
 </head>
 <body>
     {% include 'base/navbar.html' %}
     {% block content %}
-            <!--    Content goes here-->
+            <!--    Content -->
     {% endblock content %}
 </body>
 </html>
