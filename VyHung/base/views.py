@@ -50,7 +50,7 @@ def home(request):
     return render(request, 'base/index.html',context)
 
 def posts(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-id')
     myFilter = PostFilter(request.GET,queryset=posts)
     posts = myFilter.qs
 
@@ -140,7 +140,7 @@ def sendEmail(request):
         email = EmailMessage(request.POST['subject'],
         template,
         settings.EMAIL_HOST_USER,
-        ['vyvanhung2882001lnbg@gmail.com']
+        ['Dohong9a3@gmail.com']
         )
         email.fail_silently=False
         email.send()
