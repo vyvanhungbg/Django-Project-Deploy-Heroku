@@ -1,16 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import  HttpResponse
 
 from datetime import date
 from datetime import datetime
 import datetime as dt
-
+from django.views.generic import RedirectView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import PostForm,CustomUserCreationForm, ProfileForm, UserForm
 from .filters import PostFilter
 from .models import Post,AboutMe,images,Profile
 
+from django.views.generic import DetailView
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -79,11 +80,34 @@ def post(request, slug):
 		messages.success(request, "You're comment was successfuly posted!")
 
 		return redirect('post', slug=post.slug)
+	
 	context = {'post':post}
 	return render(request, 'base/post.html',context)
 
+def postLike(request, slug):
+	post = Post.objects.get(slug=slug)
+	if request.method == 'POST':
+		if post.likes.filter(id=request.user.id).exists():
+			post.likes.remove(request.user)
+		else:
+			post.likes.add(request.user)
+	return redirect('posts')  # trick load lại trang sau khi cap nhat csdl like
+
+def postLikeIndex(request, slug):
+	post = Post.objects.get(slug=slug)
+	if request.method == 'POST':
+		if post.likes.filter(id=request.user.id).exists():
+			post.likes.remove(request.user)
+		else:
+			post.likes.add(request.user)
+	return redirect('home')  # trick load lại trang sau khi cap nhat csdl like
+
+
+
 def profile(request):
 	return render(request, 'base/profile.html')
+
+
 
 #CRUD VIEWS
 @admin_only
@@ -181,7 +205,7 @@ def registerPage(request):
 			messages.success(request, 'Account successfuly created!')
 
 			user = authenticate(request, username=user.username, password=request.POST['password1'])
-
+			
 			if user is not None:
 				login(request, user)
 

@@ -11,6 +11,13 @@ class CustomUserCreationForm(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
+	def clean_email(self):
+		email = self.cleaned_data.get('email')
+		if email =='':
+			raise forms.ValidationError("Email cannot be empty or null !")
+		if User.objects.filter(email=email).exists():
+			raise forms.ValidationError("email was already registered !")
+		
 		
 
 
@@ -28,7 +35,7 @@ class UserForm(ModelForm):
 	class Meta:
 		model = User
 		fields = ['first_name', 'last_name', 'email']
-		
+	
 
 class ProfileForm(ModelForm):
 	class Meta:

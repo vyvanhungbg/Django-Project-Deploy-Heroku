@@ -37,9 +37,29 @@
 						{% endfor %}
 						<hr>
 						<div class="w-75 d-flex  justify-content-start">
-							<i class="far fa-heart" style="margin-right: 20px;"></i>
-							<i class="far fa-comments"></i>
-              		
+
+							{% comment %} tes/ {% endcomment %}
+							{% if user.is_authenticated %}
+							<form action="{% url 'postLike' post.slug %}" method="POST">
+								{% csrf_token %}
+
+								{% if user in post.likes.all %}
+								<button type="submit" name="post.slug" value="{{post.slug}}"  style="background:none;border : none;"><i class="fas fa-heart " style="color:red;"></i></button>
+								{% else %}
+								<button type="submit" name="post.slug" value="{{post.slug}}" style="background:none;border : none;"><i class="far fa-heart" ></i></button>
+								{% endif %}
+							</form>
+							{% else %}
+							<a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article!</a><br>
+							{% endif %}
+							
+							{% comment %} test {% endcomment %}
+							
+
+							<div style="margin:0px 20px 0 0px;">{{post.likes.all.count}}</div>
+							<a style="text-decoration: none;margin-right: 2px;"  href="{% url 'post' post.slug %}"><i class="far fa-comments"></i></a>
+							<div >{{post.postcomment_set.all.count}}</div>
+							
               			</div>
 					</div>
 				</div>
