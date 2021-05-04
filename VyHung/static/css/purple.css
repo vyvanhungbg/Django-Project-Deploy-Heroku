@@ -9,11 +9,12 @@
 
 	--themeDotBorder:#FFF;
 
-	--previewBg:rgba(58, 42, 65, 0.8);
+	--previewBg:rgba(217, 185, 231, 0.8);
 	--previewShadow:#2b202f;
 
-	--navColor :  rgba(150, 62, 201, 0.8);
+	/* --navColor :  rgba(150, 62, 201, 0.8); */
 	--buttonColor:#8534a3;
 
-
+	--background-image :  linear-gradient(45deg, #ca7ddd 0%, #e982f7 100%);
+	--background-image2:  linear-gradient(45deg, #d380c8 0%, #c056ca 100%);
 }

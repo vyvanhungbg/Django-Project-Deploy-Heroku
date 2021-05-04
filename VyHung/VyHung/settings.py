@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
     'ckeditor',
     'ckeditor_uploader',
+    'storages',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
@@ -153,4 +154,15 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-AWS_QUERYSTRING_AUTH = False
+# AWS_QUERYSTRING_AUTH = False
+
+
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# AWS_ACCESS_KEY_ID = 'AKIAUWR26YZAGQ7VWBGW'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'mystorypage'
+
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None

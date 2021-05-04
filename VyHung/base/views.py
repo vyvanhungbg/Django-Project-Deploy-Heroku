@@ -9,7 +9,7 @@ from django.views.generic import RedirectView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import PostForm,CustomUserCreationForm, ProfileForm, UserForm
 from .filters import PostFilter
-from .models import Post,AboutMe,images,Profile
+from .models import Post,AboutMe,images,Profile,Music
 
 from django.views.generic import DetailView
 from django.core.mail import EmailMessage
@@ -42,13 +42,14 @@ def GetDate():
 
 
 def home(request):
-    posts = Post.objects.all().order_by('-id')[:3] #-id sap xep nguoc khac id
-    aboutme = AboutMe.objects.latest('id')
-    Images = images.objects.all()
-    now,number_day = GetDate()
-    Date = {'now':now, 'number_day':number_day}
-    context = {'posts':posts, 'aboutme':aboutme, 'Date':Date, 'Images':Images}
-    return render(request, 'base/index.html',context)
+	posts = Post.objects.all().order_by('-id')[:3] #-id sap xep nguoc khac id
+	aboutme = AboutMe.objects.latest('id')
+	Images = images.objects.all()
+	now,number_day = GetDate()
+	Date = {'now':now, 'number_day':number_day}
+	music = Music.objects.latest('id')
+	context = {'posts':posts, 'aboutme':aboutme, 'Date':Date, 'Images':Images,'music':music}
+	return render(request, 'base/index.html',context)
 
 def posts(request):
     posts = Post.objects.all().order_by('-id')

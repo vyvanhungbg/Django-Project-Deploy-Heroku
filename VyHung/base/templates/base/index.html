@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Chango&display=swap" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@1,300&family=Chango&display=swap" rel="stylesheet">
-
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 	<link id="theme-style" rel="stylesheet" type="text/css" href="">
 </head>
@@ -40,7 +41,7 @@
 		
 	 	<div class="overlay"></div>
 		<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-		<source src="./images/file.mp4" type="video/mp4">
+		<source src="{% static 'images/file.mp4' %}" type="video/mp4">
 	</video>
 			<div id="theme-options-wrapper">
 			<div data-mode="light" id="light-mode" class="theme-dot"></div>
@@ -53,7 +54,7 @@
 				<div class="d-flex h-100 text-center align-items-center">
 				<div class="w-100 text-white wel-come">
 					<h1 class="text-Wellcome  text-uppercase" >Wel Come !</h1>
-					<p class="text-with lead mb-0">With ABC</p>
+					<p class="text-with lead mb-0">With the fish sulked ! </p>
 					<div class="Header-moblie">
 						<h1>HONG</h1>
 						<h1>&</h1>
@@ -69,7 +70,7 @@
 
 
 	<section class= "container-fluid d-flex justify-content-center w-75">
-		<div class="author-post  row rounded" style="padding: 30px 30px 30px 30px;">
+		<div class="author-post  row " style="padding: 30px 30px 30px 30px;">
 			<div class =" d-flex  align-items-between w-50">
 				<div class="d-flex justify-content-center">
 					<img class="author-image" src="{{aboutme.image_author.url}}"/>
@@ -107,12 +108,7 @@
 					<h4>YÊU THÍCH</h4>
 
 					<p>{{aboutme.headline_favorite}}</p>
-					<div >
-						<audio controls autoplay loop>
-						<source  src="./images/XichLinh.mp3" type="video/mp4">
-						Trình duyệt của bạn không hỗ trợ video/âm thanh
-							</audio>
-					</div>
+					
 
 					<div id="skills">
 						<ul>
@@ -155,7 +151,7 @@
 					</div>
 					<h3>Contact Me Gmail & Facebook</h3>
 
-					<a target="_blank" href="https://mail.google.com/mail">Gmail: Dohong9a3@gmail.com</a>
+					<a target="_blank" href="https://mail.google.com/mail">Gmail: Dohong***@gmail.com</a>
 					<br>
 					<a target="_blank" href="https://www.facebook.com/profile.php?id=100012264722960">Facebook: Đỗ Hồng</a>
 				</div>
@@ -166,7 +162,7 @@
 
 	<section class="s1">
 		<div class="main-container">
-			<h3 style="text-align: center;">Some of my story</h3>
+			<h3 style="text-align: center; margin-top : 20px;">Some of my story</h3>
 
 			<div class="post-wrapper">
 				{% for post in posts %}
@@ -221,32 +217,71 @@
 			</p>
 		</div>
 	</section>
-	
-	<section id= "Contact" class="s2">
-		<div class="main-container">
-			<a href=""></a>
-			<h3 style="text-align: center;">Contact Me</h3>
 
-			<form id="contact-form" method ="POST" action="{% url 'send_email'  %}">
-				{% csrf_token %}
-				<a name="contact"></a>
+<section id= "Music" class="s2">
+	<h3 style="text-align: center; margin : 15px 0px 10px 0px">Music Today</h3>
+    <div class="player">
+        <div class="cover">
+            <img src="https://hosseinghanbari.ir/other/music-player/autumn.jpg" alt="">
+        </div>
+        <div class="info">
+            <div class="title">Autumn</div>
+            <div class="singer">Instrumental Music</div>
+        </div>
+        <div class="volume-box">
+            <span class="volume-down"><i class="material-icons">remove</i></span>
+            <input type="range" class="volume-range" step="1" value="80" min="0" max="100"
+                oninput="music.volume = this.value/100">
+            <span class="volume-up"><i class="material-icons">add</i></span>
+        </div>
+        <div class="btn-box">
+            <i class="material-icons repeat" onclick="handleRepeat()">repeat</i>
+            <i class="material-icons favorite active" onclick="handleFavorite()">favorite</i>
+            <i class="material-icons volume" onclick="handleVolume()">volume_up</i>
+        </div>
+        <div class="music-box">
+            <input type="range" step="1" class="seekbar" value="0" min="0" max="100" oninput="handleSeekBar()">
 
-				<label>Name</label>
-				<input class="input-field" type="text" name="name">
+            <audio class="music-element">
+                <source src="https://hosseinghanbari.ir/other/music-player/autumn.mp3" type="audio/mp3">
+            </audio>
+            <span class="current-time">0:0</span><span class="duration">0:0</span>
+            <span class="play" onclick="handlePlay()">
+                <i class="material-icons">play_arrow</i>
+            </span>
+        </div>
+    </div>
+<script type="text/javascript" src="{% static 'js/jsmusic.js' %}"></script>
 
-				<label>Subject</label>
-				<input class="input-field" type="text" name="subject">
+</section> 
 
-				<label>Email</label>
-				<input class="input-field" type="text" name="email">
 
-				<label>Message</label>
-				<textarea class="input-field" name="message"></textarea>
 
-				<input id="submit-btn" type="submit" value="Send">
-			</form>
-		</div>
-	</section> 
+
+<section id= "Contact" class="s2">
+	<div class="main-container">
+		<h3 style="text-align: center; margin : 15px 0px 10px 0px">Contact Me</h3>
+
+		<form id="contact-form" method ="POST" action="{% url 'send_email'  %}">
+			{% csrf_token %}
+			<a name="contact"></a>
+
+			<label>Name</label>
+			<input class="input-field" type="text" name="name">
+
+			<label>Subject</label>
+			<input class="input-field" type="text" name="subject">
+
+			<label>Email</label>
+			<input class="input-field" type="text" name="email">
+
+			<label>Message</label>
+			<textarea class="input-field" name="message"></textarea>
+
+			<input id="submit-btn" type="submit" value="Send">
+		</form>
+	</div>
+</section> 
 
 	<script type="text/javascript">
 		let static = "{% static 'css' %}"

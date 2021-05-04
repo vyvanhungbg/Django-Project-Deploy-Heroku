@@ -17,7 +17,7 @@ class Profile(models.Model):
 	first_name = models.CharField(max_length=200, blank=True, null=True)
 	last_name = models.CharField(max_length=200, blank=True, null=True)
 	email = models.CharField(max_length=200)
-	profile_pic = models.ImageField(null=True, blank=True, upload_to="images", default="/user.png")
+	profile_pic = models.ImageField(null=True, blank=True, upload_to="images", default="/images/user.png")
 	bio = models.TextField(null=True, blank=True)
 	twitter = models.CharField(max_length=200,null=True, blank=True)
 
@@ -37,7 +37,7 @@ class Tag(models.Model):
 class Post(models.Model):
     headline = models.CharField(max_length=200)
     sub_headline  = models.CharField(max_length=200,null = True, blank=True)
-    thumbnail = models.ImageField(blank=True, null=True,upload_to="images",default="x.png")
+    thumbnail = models.ImageField(blank=True, null=True,upload_to="images",default="/images/x.png")
     body  = RichTextUploadingField(null = True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=False)
@@ -85,17 +85,23 @@ class song(models.Model):
     
 class images(models.Model):
     title = models.CharField(max_length=10,null=True)
-    image = models.ImageField(blank=True, null=True,upload_to="images",default="x.png")
+    image = models.ImageField(blank=True, null=True,upload_to="images",default="/images/x.png")
 
     def __str__(self):
         return self.title
+
+
+class Music(models.Model):
+    music = models.CharField(max_length=100)
+    def __str__(self):
+        return self.music
 
 class AboutMe(models.Model):
     maxim = models.CharField(max_length=100)
     more_about_me_1 = models.CharField(max_length=200)
     more_about_me_2 =  models.CharField(max_length=200,null = True, blank=True)
     images_slide = models.ManyToManyField(images)
-    image_author = models.ImageField(blank=True, null=True,upload_to="images",default="x.png")
+    image_author = models.ImageField(blank=True, null=True,upload_to="images",default="/images/x.png")
     headline_favorite = models.CharField(max_length=200,null = True, blank=True)
     favorites =  models.ManyToManyField(favorite)
     songs = models.ManyToManyField(song)
