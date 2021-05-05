@@ -2,12 +2,17 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-
+<style type="text/css">
+body{
+		background-image: var(--background-image);
+	}
+	
+</style>
 
 	<div class= "main-container">
 	<h1>Post</h1>
 	{% if request.user.is_staff %}
-		<a class="btn btn-warning" href="{% url 'create_post' %}">Create Post</a>
+		<a class="btn btn-primary" href="{% url 'create_post' %}">Create Post</a>
 	{% endif %}
 	<form id="searchForm" method="GET">
 		{{myFilter.form | crispy}}
@@ -50,7 +55,8 @@
 								{% endif %}
 							</form>
 							{% else %}
-							<a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article!</a><br>
+							<button type="submit" name="post.slug" value="{{post.slug}}" style="background:none;border : none;"> <a  href="{% url 'login' %}?next={{request.path}}"><i class="far fa-heart" ></i></a></button>
+							{% comment %} <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article!</a><br> {% endcomment %}
 							{% endif %}
 							
 							{% comment %} test {% endcomment %}

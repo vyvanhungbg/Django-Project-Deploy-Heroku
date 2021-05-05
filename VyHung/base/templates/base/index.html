@@ -56,11 +56,11 @@
 					<h1 class="text-Wellcome  text-uppercase" >Wel Come !</h1>
 					<p class="text-with lead mb-0">With the fish sulked ! </p>
 					<div class="Header-moblie">
-						<h1>HONG</h1>
-						<h1>&</h1>
-						<h1>HUNG</h1>
-						<h4>{{Date.now}}</h4>
-						<h2>{{Date.number_day}}</h2>
+						<h1 class ="text-mobile">HONG</h1>
+						<h1 class ="text-mobile">&</h1>
+						<h1 class ="text-mobile">HUNG</h1>
+						<h4 class ="text-mobile">{{Date.now}}</h4>
+						<h2 class ="text-mobile">{{Date.number_day}}</h2>
 					</div>
 					
 				</div>
@@ -193,7 +193,7 @@
 								{% endif %}
 							</form>
 							{% else %}
-							<a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article!</a><br>
+							<button type="submit" name="post.slug" value="{{post.slug}}" style="background:none;border : none;"> <a  href="{% url 'login' %}?next={{request.path}}"><i class="far fa-heart" ></i></a></button>
 							{% endif %}
 							{% comment %} <strong class="text-secondary">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</strong> {% endcomment %}
 							{% comment %} test {% endcomment %}
@@ -222,10 +222,11 @@
 	<h3 style="text-align: center; margin : 15px 0px 10px 0px">Music Today</h3>
     <div class="player">
         <div class="cover">
-            <img src="https://hosseinghanbari.ir/other/music-player/autumn.jpg" alt="">
+            <img src="{% static 'images/x.png' %}" alt=""> 
+			{% comment %} https://hosseinghanbari.ir/other/music-player/autumn.jpg {% endcomment %}
         </div>
         <div class="info">
-            <div class="title">Autumn</div>
+            <div class="title">Music Today</div>
             <div class="singer">Instrumental Music</div>
         </div>
         <div class="volume-box">
@@ -243,7 +244,7 @@
             <input type="range" step="1" class="seekbar" value="0" min="0" max="100" oninput="handleSeekBar()">
 
             <audio class="music-element">
-                <source src="https://hosseinghanbari.ir/other/music-player/autumn.mp3" type="audio/mp3">
+                <source src="{% static 'music/' %}{{music}}" type="audio/mp3">
             </audio>
             <span class="current-time">0:0</span><span class="duration">0:0</span>
             <span class="play" onclick="handlePlay()">

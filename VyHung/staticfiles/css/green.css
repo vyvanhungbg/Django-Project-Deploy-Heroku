@@ -1,19 +1,22 @@
 :root{
-	--mainColor:#606B56;
-	--secondaryColor:#515a48;
+	--mainColor:#15d5db;
+	--secondaryColor:#14a6b9;
+	--color-box-shadow :#15d5db;
+	--background-image-author :linear-gradient(45deg, #89f7fe 0%, #66a5ff 100%);
 
-	--borderColor:#161914;
+	--background-image-player : linear-gradient(45deg, #5ee7df 0%, #bf9dd4 100%);
+	--borderColor :#14a6b9;
 
 	--mainText:#fff;
-	--secondaryText:#eeeeee;
+	--secondaryText:#221111;
 
 	--themeDotBorder:#FFF;
 
 	--previewBg:rgb(81, 90, 72, 0.8);
-	--previewShadow:#2a2f25;
+	--previewShadow: #5ae9e2;
 
-	--navColor :  rgba(62, 207, 106, 0.8);
-	--buttonColor:#669966;
+	--navColor :  #2ababe;
+	--buttonColor:#08b5bb;
 	--background-image :  linear-gradient(45deg, #9bffe9 0%, #a7fffb 100%);
 	--background-image2:  linear-gradient(45deg, #9afffa 0%, #2ababe 100%);
 

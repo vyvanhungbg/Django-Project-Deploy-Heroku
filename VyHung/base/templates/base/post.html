@@ -3,7 +3,9 @@
 {% block content %}
 
 <style type="text/css">
-	
+	body{
+		background-image: var(--background-image);
+	}
 	img{
 		max-width: 100%;
 		object-fit: cover;
@@ -52,17 +54,26 @@
 	.comment-body{
 		word-break: break-word;
 		font-size: 14px;
-		background-color: var(--navColor );
+		background-image: var(--navColor );
 		border-radius: 5px;
 		padding: 7px;
+		box-shadow: 0 2px 4px 0 var(--color-box-shadow);
 }
-	}
+	
 
 	@media screen and (max-width: 900px){
 		.post-container{
 			width: 95%;
+			flex-direction: column;
 		}
 	}
+
+	@media screen and (max-width: 1130px)
+	.post-container {
+		width: 98%;
+		flex-direction: column;
+	}
+
 </style>
 
 <div class="post-container">
@@ -88,7 +99,8 @@
 	<p>{{post.body|safe}}</p>
 
 	<div class="comments-wrapper">
-		<h5>Comments: {{post.postcomment_set.all.count}}</h5>
+		<h6>Like: {{post.likes.all.count}}</h6>
+		<h6>Comments: {{post.postcomment_set.all.count}}</h6>
 		<hr>
 		<!--
 			- Not logged in, output form and say "Register to comment and give room for a message"
@@ -114,7 +126,7 @@
 					<div>
 						<p class="comment-author">{{comment.author}}: {{comment.created|date:"H:i:s | d-m-Y"}}</p>
 					<span class="comment-span">
-						<p class="comment-body">{{comment.body}}</p>
+						<span class="comment-body">{{comment.body}}</span>
 					</div>
 				</span>
 			</div>

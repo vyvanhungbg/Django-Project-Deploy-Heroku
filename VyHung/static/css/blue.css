@@ -1,20 +1,23 @@
 :root{
-	--mainColor:#233547;
-	--secondaryColor:#213242;
+	--mainColor:#23473f;
+	--secondaryColor:#82baee;
+	--color-box-shadow :#1b8b8f;
+	--background-image-author :linear-gradient(45deg, #42a8d8 0%, #a9f5a9  100%);
 
+	--background-image-player : linear-gradient(45deg, #a8f3a8 0%,#5cbfec   100%);
 	--borderColor:#164D56;
 
 	--mainText:#fff;
-	--secondaryText:#eeeeee;
+	--secondaryText:#181616;
 
 	--themeDotBorder:#FFF;
 
 	--previewBg:rgba(31, 51, 70, 0.8);
 	--previewShadow:#1f3449;
 
-	--navColor :  rgba(62, 207, 106, 0.8);
+	--navColor :  linear-gradient(45deg, #3cafe4 0%, #90f790  100%);
 	--buttonColor:#17a2b8;
-	--background-image :  linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
-	--background-image2:  linear-gradient(45deg, #332a2a 0%, #3f3a38 100%);
+	--background-image :  linear-gradient(45deg, #94f0b3 0%, #3cb3eb  100%);
+	--background-image2:  linear-gradient(45deg, #42a8d8 0%, #a9f5a9  100%);
 	
 }
