@@ -226,8 +226,10 @@ def logoutUser(request):
 @login_required(login_url="home")
 def userAccount(request):
 	profile = request.user.profile
-
-	context = {'profile':profile}
+	countLike = Post.objects.filter(likes=request.user).count()
+	# postComment = PostComment.objects.filter(userComment=request.user).count()
+	numberOfPost = Post.objects.all().count()
+	context = {'profile':profile, 'number_post_like':countLike,'numberOfPost':numberOfPost}
 	return render(request, 'base/account.html', context)
 
 @login_required(login_url="home")
