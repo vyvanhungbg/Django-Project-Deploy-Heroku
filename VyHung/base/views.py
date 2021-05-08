@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.http import  HttpResponse
+from django.http import  HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 
 from datetime import date
 from datetime import datetime
@@ -76,7 +77,8 @@ def post(request, slug):
 		PostComment.objects.create(
 			author=request.user.profile,
 			post=post,
-			body=request.POST['comment']
+			body=request.POST['comment'],
+			post_comment= request.user.username
 			)
 		messages.success(request, "You're comment was successfuly posted!")
 
@@ -200,13 +202,14 @@ def registerPage(request):
 	form = CustomUserCreationForm()
 	if request.method == 'POST':
 		form = CustomUserCreationForm(request.POST)
+		
 		if form.is_valid():
 			user = form.save(commit=False)
 			user.save()
 			messages.success(request, 'Account successfuly created!')
 
 			user = authenticate(request, username=user.username, password=request.POST['password1'])
-			
+
 			if user is not None:
 				login(request, user)
 
@@ -227,9 +230,9 @@ def logoutUser(request):
 def userAccount(request):
 	profile = request.user.profile
 	countLike = Post.objects.filter(likes=request.user).count()
-	# postComment = PostComment.objects.filter(userComment=request.user).count()
+	countComment = PostComment.objects.filter(post_comment=request.user).count()
 	numberOfPost = Post.objects.all().count()
-	context = {'profile':profile, 'number_post_like':countLike,'numberOfPost':numberOfPost}
+	context = {'profile':profile, 'number_post_like':countLike,'countComment':countComment,'numberOfPost':numberOfPost}
 	return render(request, 'base/account.html', context)
 
 @login_required(login_url="home")

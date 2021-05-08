@@ -118,7 +118,7 @@ class PostComment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True )
     body = models.TextField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-   
+    post_comment = models.CharField(max_length=200,null = True, blank=True) # xac dinh tham chieu toi xem ai cmt
     def __str__(self):
         return self.body
     
@@ -132,36 +132,8 @@ class PostComment(models.Model):
 
 
 
-
     
 
-@receiver(post_save, sender=User)
-def create_profile(sender, instance, created, **kwargs):
-	if created:
-		Profile.objects.create(
-			user=instance,
-			first_name=instance.first_name,
-			last_name=instance.last_name,
-			email=instance.email,
-			)
-		print("Profile Created!")
-
-
-@receiver(post_save, sender=User)
-def update_profile(sender, instance, created, **kwargs):
-    if created == False:
-
-        instance.profile.first_name = instance.first_name
-        instance.profile.last_name = instance.last_name
-        instance.profile.email = instance.email
-        instance.profile.save()
-        print("Profile updated!")
-
-
-@receiver(pre_save, sender=User)
-def update_username(sender, instance, **kwargs):
-    instance.username = instance.email
-    print("Username updated!", instance.username)
 
 
 

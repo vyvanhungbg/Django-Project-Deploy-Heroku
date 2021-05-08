@@ -8,14 +8,14 @@
 	--borderColor: rgba(210, 119, 238, 0.8);
 
 	--mainText:rgb(245, 236, 236);
-	--secondaryText:#4b5156;
+	--secondaryText:#16191b;
 
 	--themeDotBorder:#24292e;
 
 	--previewBg:rgb(251, 249, 243, 0.8);
 	--previewShadow:#f0ead6;
 
-	--navColor :  rgba(217, 142, 240, 0.8);
+	--navColor : linear-gradient(45deg, #8eceec 0%,#d2a8ec  100%);
 	--buttonColor:rgba(178, 67, 212, 0.8);
 	--background-image :  linear-gradient(45deg, #7fd2f3 0%, #d9aef7 100%);
 	--background-image2:  linear-gradient(45deg, #d9aef7 0%, #70cdf1 100%);

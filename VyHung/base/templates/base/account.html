@@ -3,6 +3,13 @@
 {% block content %}
 
 <style type="text/css">
+	body{
+		background-image: var(--background-image);
+	}
+	.card-body{
+		background-image: var(--background-image);
+		box-shadow: 0 2px 4px 0 var(--color-box-shadow);
+	}
 	#user_pic{
 		height: 200px;
 		width: 200px;
@@ -34,7 +41,7 @@
 		</div>
 		<div class="col-md-8">
 			<div class="card card-body">
-				<h3>THÔNG TIN :</h3>
+				<h3>ACCOUNT</h3>
 				<hr>
 				<table class="table">
 					<thead class="thead-dark">
@@ -47,11 +54,11 @@
 						</tr>
 					</thead>
 					<tr>
-						<td>122523462</td>
+						<td>{{profile}}</td>
 						<td>{{numberOfPost}}</td>
 						<td>{{number_post_like}}</td>
-						<td></td>
-						<td><a class="btn btn-dark btn-sm" href="">View Posts</a></td>
+						<td>{{countComment}}</td>
+						<td><a class="btn btn-dark btn-sm" href="{% url 'posts'  %}">View Posts</a></td>
 					</tr>
 
 					<tr>
