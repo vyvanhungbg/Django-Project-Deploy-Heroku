@@ -141,8 +141,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'sentformmystorypage@gmail.com'
-EMAIL_HOST_PASSWORD = 'cprevlxjxemeqbno' 
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = '' 
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
@@ -159,9 +159,9 @@ CKEDITOR_CONFIGS = {
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# AWS_ACCESS_KEY_ID = 'AKIAUWR26YZAGQ7VWBGW'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'mystorypage'
+# AWS_ACCESS_KEY_ID = ''
+# AWS_SECRET_ACCESS_KEY = ''
+# AWS_STORAGE_BUCKET_NAME = ''
 
 # AWS_S3_FILE_OVERWRITE = False
 # AWS_DEFAULT_ACL = None
