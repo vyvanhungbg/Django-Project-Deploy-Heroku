@@ -7,6 +7,7 @@ urlpatterns = [
     path('post/<slug:slug>/', views.post, name='post'),
     path('postLike/<slug:slug>/', views.postLike, name='postLike'),
     path('postLikeIndex/<slug:slug>/', views.postLikeIndex, name='postLikeIndex'), #Like Index
+    path('LikeThisPost/<slug:slug>/', views.LikeThisPost, name='LikeThisPost'), #Like this post
     path('profile/', views.profile, name='profile'),
     path('create_post/', views.createPost, name='create_post'),
     path('update_post/<slug:slug>/', views.updatePost, name='update_post'),

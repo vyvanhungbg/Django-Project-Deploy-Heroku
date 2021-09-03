@@ -105,7 +105,14 @@ def postLikeIndex(request, slug):
 			post.likes.add(request.user)
 	return redirect('home')  # trick load lại trang sau khi cap nhat csdl like
 
-
+def LikeThisPost(request, slug):
+	post = Post.objects.get(slug=slug)
+	if request.method == 'POST':
+		if post.likes.filter(id=request.user.id).exists():
+			post.likes.remove(request.user)
+		else:
+			post.likes.add(request.user)
+	return redirect('post', slug=post.slug)  # trick load lại trang sau khi cap nhat csdl like
 
 def profile(request):
 	return render(request, 'base/profile.html')
@@ -167,7 +174,7 @@ def sendEmail(request):
         email = EmailMessage(request.POST['subject'],
         template,
         settings.EMAIL_HOST_USER,
-        ['Dohong9a3@gmail.com']
+        ['mystorypagemanagement@gmail.com']
         )
         email.fail_silently=False
         email.send()

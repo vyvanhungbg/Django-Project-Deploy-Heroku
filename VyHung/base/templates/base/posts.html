@@ -9,14 +9,14 @@ body{
 	
 </style>
 
-	<div class= "main-container">
+	<div class= "main-container" >
 	<h1>Post</h1>
 	{% if request.user.is_staff %}
 		<a class="btn btn-primary" href="{% url 'create_post' %}">Create Post</a>
 	{% endif %}
-	<form id="searchForm" method="GET">
+	<form style="font-family: 'Roboto Mono', monospace;margin-bottom: 12px; " id="searchForm" method="GET">
 		{{myFilter.form | crispy}}
-		<input class="btn btn-primary" type="submit"  name="Search">
+		<input class="btn btn-primary" type="submit"  value="Search">
 	
 	
 	</form>

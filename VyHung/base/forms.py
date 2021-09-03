@@ -28,8 +28,8 @@ class PostForm(ModelForm):
 
 	class Meta:
 		model = Post
-		fields = '__all__'
-
+		# fields = '__all__'
+		fields = ['headline', 'sub_headline', 'thumbnail', 'body', 'tags']
 		widgets = {
 			'tags':forms.CheckboxSelectMultiple(),
 		}
@@ -44,5 +44,6 @@ class ProfileForm(ModelForm):
 	class Meta:
 		model = Profile
 		fields = '__all__'
+		#fields = ['first_name','last_name','profile_pic','bio','Facebook']
 		exclude = ['user']
 

@@ -47,21 +47,23 @@
 	.author-pic{
 		width: 50px;
 		height: 50px;
-		border-radius: 50%;
+		border-radius: 50% !important;
 		margin-right: 10px;
 	}
 
 	.comment-body{
-		margin : 5px;
 		word-break: break-word;
 		font-size: 16px;
-		background-image: var(--navColor );
-		border-radius: 5px;
-		padding: 7px;
-		box-shadow: 0 2px 4px 0 var(--color-box-shadow);
-}
-	
 
+}
+
+	.comment-span{
+		background-image: var(--navColor );
+		box-shadow: 0 2px 4px 0 var(--color-box-shadow);
+		border-radius: 5px;
+		margin : 5px;
+		padding: 8px;
+}
 	@media screen and (max-width: 900px){
 		.post-container{
 			width: 95%;
@@ -100,8 +102,23 @@
 	<p>{{post.body|safe}}</p>
 
 	<div class="comments-wrapper">
+			{% if user.is_authenticated %}
+			<form action="{% url 'LikeThisPost' post.slug %}" method="POST">
+				{% csrf_token %}
+
+				{% if user in post.likes.all %}
+				<button type="submit" name="post.slug" value="{{post.slug}}"  style="background:none;border : none;"><i class="fas fa-heart " style="color:red;"></i></button>
+				{% else %}
+				<button type="submit" name="post.slug" value="{{post.slug}}" style="background:none;border : none;"><i class="far fa-heart" ></i></button>
+				{% endif %}
+			</form>
+			{% else %}
+			<button type="submit" name="post.slug" value="{{post.slug}}" style="background:none;border : none;"> <a  href="{% url 'login' %}?next={{request.path}}"><i class="far fa-heart" ></i></a></button>
+			{% comment %} <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article!</a><br> {% endcomment %}
+			{% endif %}
 		<h6>Like: {{post.likes.all.count}}</h6>
 		<h6>Comments: {{post.postcomment_set.all.count}}</h6>
+		<h6>Created at: {{post.created|date:"H:i:s | d-m-Y"}}</h6>
 		<hr>
 		<!--
 			- Not logged in, output form and say "Register to comment and give room for a message"
@@ -126,10 +143,10 @@
 				
 					<div>
 						<p class="comment-author">{{comment.author}}: {{comment.created|date:"H:i:s | d-m-Y"}}</p>
-					<span class="comment-span">
+					<div class="comment-span">
 						<span class="comment-body">{{comment.body}}</span>
 					</div>
-				</span>
+					</div>
 			</div>
 		{% endfor %}
 	</div>
